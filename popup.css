@@ -1,0 +1,328 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 360px;
+  margin: 0;
+  font: 13px/1.5 system-ui, -apple-system, "PingFang SC", sans-serif;
+  color: #1f2430;
+  background: #f7f8fb;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: #2e5bff;
+  color: #fff;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.status {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.status.ok::before {
+  content: "● ";
+  color: #8ff0a4;
+}
+
+.status.err::before {
+  content: "● ";
+  color: #ff9b9b;
+}
+
+.controls,
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #fff;
+  border-bottom: 1px solid #eceef3;
+}
+
+.toolbar {
+  border-top: 1px solid #eceef3;
+  border-bottom: none;
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.folder-box {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+}
+
+select {
+  flex: 1;
+  padding: 5px 6px;
+  border: 1px solid #d7dbe4;
+  border-radius: 6px;
+  font-size: 12px;
+  background: #fff;
+  max-width: 240px;
+}
+
+.btn-mini {
+  border: 1px solid #d7dbe4;
+  background: #fff;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.btn-mini:hover {
+  background: #f0f3ff;
+}
+
+.btn-primary {
+  margin-left: auto;
+  border: none;
+  background: #2e5bff;
+  color: #fff;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #1f47e0;
+}
+
+.counter {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.msg {
+  min-height: 0;
+  padding: 0 12px;
+  font-size: 12px;
+  color: #2e5bff;
+}
+
+.msg.err {
+  color: #d23b3b;
+}
+
+.msg.show {
+  min-height: 18px;
+  padding: 6px 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 10px 12px 14px;
+  max-height: 420px;
+  overflow-y: auto;
+}
+
+.card {
+  position: relative;
+  border: 1px solid #eceef3;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  aspect-ratio: 1 / 1;
+}
+
+.thumb-wrap {
+  width: 100%;
+  height: 100%;
+  background: #eef0f4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumb-wrap::after {
+  content: "…";
+  color: #b6bcc8;
+  font-size: 18px;
+}
+
+.thumb-wrap:has(.thumb.loaded)::after,
+.thumb-wrap:has(.thumb.failed)::after {
+  content: "";
+}
+
+.thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.thumb.loaded {
+  opacity: 1;
+}
+
+.thumb.failed {
+  display: none;
+}
+
+.thumb-wrap:has(.thumb.failed) {
+  background: #f4f5f8;
+}
+
+.thumb-wrap:has(.thumb.failed)::before {
+  content: "✕";
+  color: #c9ced8;
+  font-size: 20px;
+}
+
+.card .check {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  z-index: 2;
+}
+
+.card .check input {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.card .meta {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2px 4px;
+  font-size: 10px;
+  color: #fff;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: #9aa1ad;
+  padding: 30px 0;
+}
+
+/* ---------- 剪贴板导入 ---------- */
+.clip-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  background: #fff;
+  border-bottom: 1px solid #eceef3;
+}
+
+.clip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #eef3ff;
+  border-bottom: 1px solid #dbe4ff;
+}
+
+.clip[hidden] {
+  display: none;
+}
+
+/* ---------- 手动粘贴兜底 ---------- */
+.paste-zone {
+  padding: 8px 12px;
+  background: #fff8e6;
+  border-bottom: 1px solid #f2e2b8;
+}
+
+.paste-zone[hidden] {
+  display: none;
+}
+
+.paste-hint {
+  font-size: 12px;
+  color: #8a6d1d;
+  margin-bottom: 4px;
+}
+
+.paste-sink {
+  min-height: 42px;
+  border: 1px dashed #d8c48a;
+  border-radius: 6px;
+  background: #fff;
+  padding: 4px 6px;
+  font-size: 11px;
+  color: #9aa1ad;
+  outline: none;
+  max-height: 60px;
+  overflow: hidden;
+}
+
+.paste-sink:empty::before {
+  content: "点这里后按 ⌘V";
+  color: #b9bfcb;
+}
+
+.paste-sink img {
+  max-height: 48px;
+  max-width: 100%;
+  border-radius: 4px;
+}
+
+.clip-thumb {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid #dbe4ff;
+  flex: 0 0 auto;
+}
+
+.clip-info {
+  min-width: 0;
+  flex: 1;
+}
+
+.clip-title {
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.clip-meta {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.clip .btn-primary {
+  margin-left: 0;
+}

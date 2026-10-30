@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header>
+      <div class="title">Eagle 素材导入</div>
+      <div id="status" class="status">检测中…</div>
+    </header>
+
+    <section class="controls">
+      <label class="switch">
+        <input type="checkbox" id="hoverToggle" checked />
+        <span>悬停工具条</span>
+      </label>
+      <div class="folder-box">
+        <select id="folderSelect" title="选择导入文件夹">
+          <option value="">（库根目录）</option>
+        </select>
+        <button id="refreshFolders" class="btn-mini" title="刷新文件夹">⟳</button>
+      </div>
+    </section>
+
+    <section class="toolbar">
+      <button id="selectAll" class="btn-mini">全选</button>
+      <button id="selectNone" class="btn-mini">清空</button>
+      <span id="counter" class="counter">0 张</span>
+      <button id="importBtn" class="btn-primary">导入到 Eagle</button>
+    </section>
+
+    <section class="clip-row">
+      <button id="autoCopyBtn" class="btn-mini" title="自动在画布上右键 → 更多 → 复制/粘贴 → 复制 PNG 图片，然后导入">
+        一键复制画板并导入
+      </button>
+      <button id="clipBtn" class="btn-mini">读取剪贴板</button>
+      <label class="switch">
+        <input type="checkbox" id="clipAutoToggle" checked />
+        <span>自动导入</span>
+      </label>
+    </section>
+
+    <section id="clipBar" class="clip" hidden>
+      <img id="clipThumb" class="clip-thumb" alt="" />
+      <div class="clip-info">
+        <div id="clipTitle" class="clip-title">剪贴板图片</div>
+        <div id="clipMeta" class="clip-meta"></div>
+      </div>
+      <button id="clipImport" class="btn-primary">导入</button>
+    </section>
+
+    <section id="pasteZone" class="paste-zone" hidden>
+      <div class="paste-hint">在这里按 <b>⌘V</b> 粘贴图片（自动导入）</div>
+      <div id="pasteSink" class="paste-sink" contenteditable="true" tabindex="0"></div>
+    </section>
+
+    <div id="msg" class="msg"></div>
+    <main id="grid" class="grid"></main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
