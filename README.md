@@ -15,19 +15,11 @@
 
 ## 安装（开发者模式加载）
 
-1. 获取代码（已下载可跳过）：
-   ```bash
-   git clone git@github.com:Annyzhanghhh/eagle-importer.git
-   cd eagle-importer
-   ```
-2. 生成图标（首次需要）：
-   ```bash
-   python3 gen_icons.py
-   ```
-3. 打开浏览器扩展管理页：`chrome://extensions`
-4. 右上角开启「开发者模式」。
-5. 点击「加载已解压的扩展程序」，选择本 `eagle-importer` 文件夹。
-6. 点击工具栏拼图图标，将「Eagle 素材导入助手」固定到工具栏。
+1. 下载代码：`git clone git@github.com:Annyzhanghhh/eagle-importer.git`，或在仓库页点 `Code → Download ZIP` 后解压（图标已内置，直接可用）。
+2. 打开浏览器扩展管理页：`chrome://extensions`
+3. 右上角开启「开发者模式」。
+4. 点击「加载已解压的扩展程序」，选择本 `eagle-importer` 文件夹。
+5. 点击工具栏拼图图标，将「Eagle 素材导入助手」固定到工具栏。
 
 ## 使用
 
@@ -64,6 +56,7 @@
 
 - Eagle 官方扩展为闭源商店版，仅支持拖拽到「最近文件夹」；本扩展支持**在图片上直接选择任意目标文件夹**，并开源可自定义。
 - 所有通信仅在本机 `localhost` 与 Eagle 之间发生，不上传任何数据。
+- 扩展图标已内置，无需任何生成步骤；仅当你改了 `gen_icons.py` 里的图形想换图标时，才需要运行 `python3 gen_icons.py`。
 
 ## 目录结构
 
@@ -73,8 +66,8 @@ eagle-importer/
 ├── background.js     # Service Worker：Eagle API 封装、右键菜单、后台抓图
 ├── content.js        # 内容脚本：图片扫描、悬停工具条
 ├── popup.html/js/css # 弹窗 UI：扫描、选择、批量导入
-├── gen_icons.py      # 生成 icons/ 下的图标
-├── icons/            # 扩展图标
+├── gen_icons.py      # 可选：重新生成 icons/ 下的图标（纯标准库）
+├── icons/            # 扩展图标（已内置）
 └── LICENSE           # MIT
 ```
 
