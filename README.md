@@ -2,6 +2,8 @@
 
 自动识别网页上的图片素材，并可直接选择 **Eagle** 文件夹导入。
 
+> 仓库：https://github.com/Annyzhanghhh/eagle-importer
+
 - 打开插件弹窗，自动列出当前页面的所有图片（含 `<img>` 与 CSS 背景图），勾选后一键导入到指定文件夹。
 - 鼠标悬停任意图片，会浮出工具条，可 **直接选择文件夹** 单张导入（用过的最近文件夹会被记住）。
 - 右键图片 →「导入到 Eagle」子菜单，可直接挑选目标文件夹导入。
@@ -13,15 +15,19 @@
 
 ## 安装（开发者模式加载）
 
-1. 生成图标（首次需要）：
+1. 获取代码（已下载可跳过）：
    ```bash
+   git clone git@github.com:Annyzhanghhh/eagle-importer.git
    cd eagle-importer
+   ```
+2. 生成图标（首次需要）：
+   ```bash
    python3 gen_icons.py
    ```
-2. 打开浏览器扩展管理页：`chrome://extensions`
-3. 右上角开启「开发者模式」。
-4. 点击「加载已解压的扩展程序」，选择本 `eagle-importer` 文件夹。
-5. 点击工具栏拼图图标，将「Eagle 素材导入助手」固定到工具栏。
+3. 打开浏览器扩展管理页：`chrome://extensions`
+4. 右上角开启「开发者模式」。
+5. 点击「加载已解压的扩展程序」，选择本 `eagle-importer` 文件夹。
+6. 点击工具栏拼图图标，将「Eagle 素材导入助手」固定到工具栏。
 
 ## 使用
 
